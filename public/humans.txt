@@ -1,0 +1,37 @@
+/* GEO OPTIMIZATION INSTITUTE */
+
+# Team
+Website: https://yinhang.org
+Contact: contact@yinhang.org
+Twitter: @geo_institute
+GitHub: https://github.com/geo-institute
+
+# About
+GEO Optimization Institute is a leading research and consulting organization
+specializing in Generative Engine Optimization (GEO). We help businesses
+establish authority and visibility in AI-powered search environments.
+
+# Expertise
+- Generative Engine Optimization (GEO)
+- AI Search Optimization
+- ChatGPT and Gemini Optimization
+- Semantic Search Enhancement
+- Entity Graph Development
+- AI Trust Signal Implementation
+
+# Technology
+- Next.js 14
+- Tailwind CSS
+- TypeScript
+- Structured Data (Schema.org)
+- AI Crawler Optimization
+
+# Mission
+To help AI understand your content as humans do, building trust and
+authority in the age of generative search.
+
+# Location
+Beijing, China
+Global Services
+
+/* LAST UPDATED: 2025-01-29 */
