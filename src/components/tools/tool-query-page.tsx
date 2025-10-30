@@ -662,7 +662,7 @@ export const ToolQueryPage = () => {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    {results.models.map(modelId => {
+                    {results.models.map((modelId: string) => {
                       const model = aiModels.find(m => m.id === modelId)
                       return (
                         <div key={modelId} className="flex items-center justify-between p-4 border border-border rounded-lg">

@@ -84,6 +84,13 @@ class GoogleOAuthService {
       callback: this.handleCredentialResponse.bind(this),
       auto_select: false,
       cancel_on_tap_outside: false,
+      // 禁用FedCM，使用传统方式
+      use_fedcm_for_prompt: false,
+      // 本地开发配置
+      hosted_domain: '',
+      // 添加额外配置
+      context: 'signin',
+      ux_mode: 'popup',
     })
 
     this.isInitialized = true
@@ -166,25 +173,57 @@ class GoogleOAuthService {
           reject(new Error('Login timeout'))
         }, 30000) // 30秒超时
 
-        // 弹出登录窗口
-        window.google.accounts.id.prompt((notification: any) => {
-          if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
-            // 如果没有显示，使用传统的登录流程
-            window.google.accounts.id.renderButton(
-              document.getElementById('google-signin-button')!,
-              {
-                theme: 'outline',
-                size: 'large',
-                text: 'signin_with',
-                width: 300,
-              }
-            )
-          }
-        })
+        // 尝试弹出登录窗口
+        try {
+          window.google.accounts.id.prompt((notification: any) => {
+            if (notification.isNotDisplayed() || notification.isSkippedMoment()) {
+              // 如果没有显示，使用备用方案
+              this.fallbackSignIn()
+            }
+          })
+        } catch (promptError) {
+          console.warn('Google prompt failed, using fallback:', promptError)
+          this.fallbackSignIn()
+        }
       })
     } catch (error) {
       console.error('Google login error:', error)
       throw error
+    }
+  }
+
+  // 备用登录方案
+  private fallbackSignIn(): void {
+    // 创建一个临时的登录按钮
+    const button = document.createElement('div')
+    button.id = 'google-signin-button-temp'
+    button.style.display = 'none'
+    document.body.appendChild(button)
+
+    try {
+      window.google.accounts.id.renderButton(button, {
+        theme: 'outline',
+        size: 'large',
+        text: 'signin_with',
+        width: 300,
+        click_listener: () => {
+          // 清理临时按钮
+          setTimeout(() => {
+            if (button.parentNode) {
+              button.parentNode.removeChild(button)
+            }
+          }, 1000)
+        }
+      })
+
+      // 模拟点击
+      button.click()
+    } catch (error) {
+      // 清理临时按钮
+      if (button.parentNode) {
+        button.parentNode.removeChild(button)
+      }
+      throw new Error('Google sign-in button failed: ' + error)
     }
   }
 

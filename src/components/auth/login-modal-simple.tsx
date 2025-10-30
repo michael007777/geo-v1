@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { X, Mail, Shield, Star, CheckCircle, AlertCircle } from "lucide-react"
 import { googleOAuthService, type GoogleUser } from "@/lib/auth/google-oauth"
+import { fallbackAuthService, type FallbackUser } from "@/lib/auth/fallback-auth"
 
 interface LoginModalProps {
   isOpen: boolean
@@ -17,6 +18,9 @@ export const LoginModalSimple = ({ isOpen, onClose, onLoginSuccess }: LoginModal
   const [isLoading, setIsLoading] = React.useState(false)
   const [error, setError] = React.useState<string | null>(null)
   const [isInitialized, setIsInitialized] = React.useState(false)
+  const [showFallback, setShowFallback] = React.useState(false)
+  const [email, setEmail] = React.useState('')
+  const [name, setName] = React.useState('')
 
   // 初始化Google OAuth
   React.useEffect(() => {
@@ -52,6 +56,39 @@ export const LoginModalSimple = ({ isOpen, onClose, onLoginSuccess }: LoginModal
       onClose()
     } catch (error) {
       console.error("Google登录失败:", error)
+      const errorMessage = error instanceof Error ? error.message : "登录失败，请重试"
+      setError(errorMessage)
+      // 如果Google登录失败，显示备用登录选项
+      setTimeout(() => setShowFallback(true), 1000)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const handleFallbackLogin = async () => {
+    if (!email.trim() || !name.trim()) {
+      setError('请填写完整的邮箱和姓名')
+      return
+    }
+
+    setError(null)
+    setIsLoading(true)
+
+    try {
+      const fallbackUser = await fallbackAuthService().signInWithEmail(email, name)
+
+      const userData = {
+        email: fallbackUser.email,
+        name: fallbackUser.name
+      }
+
+      if (onLoginSuccess) {
+        onLoginSuccess(userData)
+      }
+
+      onClose()
+    } catch (error) {
+      console.error("备用登录失败:", error)
       const errorMessage = error instanceof Error ? error.message : "登录失败，请重试"
       setError(errorMessage)
     } finally {
@@ -135,25 +172,84 @@ export const LoginModalSimple = ({ isOpen, onClose, onLoginSuccess }: LoginModal
               )}
             </Button>
 
-            {/* 分隔线 */}
-            <div className="relative">
-              <div className="absolute inset-0 flex items-center">
-                <span className="w-full border-t border-gray-200" />
-              </div>
-              <div className="relative flex justify-center text-sm">
-                <span className="bg-white px-4 text-muted-foreground">或者</span>
-              </div>
-            </div>
+            {(showFallback || error) && (
+              <>
+                {/* 分隔线 */}
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t border-gray-200" />
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="bg-white px-4 text-muted-foreground">备用登录方式</span>
+                  </div>
+                </div>
 
-            {/* 游客访问 */}
-            <Button
-              variant="outline"
-              onClick={handleGuestAccess}
-              className="w-full h-12 border-gray-200 hover:bg-gray-50 transition-all duration-300"
-            >
-              <Mail className="h-4 w-4 mr-2" />
-              游客模式访问
-            </Button>
+                {/* 备用登录表单 */}
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      姓名
+                    </label>
+                    <input
+                      type="text"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                      placeholder="请输入您的姓名"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      disabled={isLoading}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      邮箱
+                    </label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="请输入您的邮箱地址"
+                      className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      disabled={isLoading}
+                    />
+                  </div>
+                  <Button
+                    onClick={handleFallbackLogin}
+                    disabled={isLoading}
+                    className="w-full h-12 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all duration-300"
+                  >
+                    {isLoading ? (
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mx-auto" />
+                    ) : (
+                      <span className="font-medium">快速登录</span>
+                    )}
+                  </Button>
+                </div>
+              </>
+            )}
+
+            {!showFallback && !error && (
+              <>
+                {/* 分隔线 */}
+                <div className="relative">
+                  <div className="absolute inset-0 flex items-center">
+                    <span className="w-full border-t border-gray-200" />
+                  </div>
+                  <div className="relative flex justify-center text-sm">
+                    <span className="bg-white px-4 text-muted-foreground">或者</span>
+                  </div>
+                </div>
+
+                {/* 游客访问 */}
+                <Button
+                  variant="outline"
+                  onClick={handleGuestAccess}
+                  className="w-full h-12 border-gray-200 hover:bg-gray-50 transition-all duration-300"
+                >
+                  <Mail className="h-4 w-4 mr-2" />
+                  游客模式访问
+                </Button>
+              </>
+            )}
 
             {/* 功能特性 */}
             <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-4">
