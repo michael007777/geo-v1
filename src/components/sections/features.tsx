@@ -54,7 +54,7 @@ export const FeaturesSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <Badge className="mb-4">GEO五步法框架</Badge>
-          <h2 className="text-3xl font-bold tracking-tight mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
             系统化的AI时代
             <br />
             内容优化方法论

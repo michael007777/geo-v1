@@ -20,8 +20,8 @@ export const HeroSection = () => {
             </span>
           </div>
 
-          {/* 主标题 - 使用新的字体系统 */}
-          <h1 className="text-4xl font-bold tracking-tight mb-6">
+          {/* 主标题 - 与 methods 页面保持一致 */}
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
             <span className="block mb-2">让AI像人类一样</span>
             <GradientText className="block">理解您的内容</GradientText>
           </h1>
