@@ -16,23 +16,51 @@ import {
   Library,
   Mail,
   User,
+  Brain,
+  FileText,
+  HelpCircle,
+  Search,
+  Users,
+  TrendingUp,
+  Shield,
+  Wrench,
+  FileCheck,
+  ListChecks,
+  Code,
 } from "lucide-react"
 import { LoginModalSimple } from "@/components/auth/login-modal-simple"
 import { googleOAuthService } from "@/lib/auth/google-oauth"
 
 const getIcon = (title: string) => {
   switch (title) {
+    // 知识中心图标
+    case "基础知识":
+      return <Brain className="h-4 w-4" />
+    case "GEO方法论":
+      return <FileText className="h-4 w-4" />
     case "操作教程":
-    case "深度报告":
-    case "提示词实验室":
-    case "工具索引":
       return <BookOpen className="h-4 w-4" />
+    case "案例研究":
+      return <FolderOpen className="h-4 w-4" />
+    case "常见问答":
+      return <HelpCircle className="h-4 w-4" />
+    case "深度报告":
+      return <TrendingUp className="h-4 w-4" />
+    case "提示词实验室":
+      return <Search className="h-4 w-4" />
+    case "工具索引":
+      return <Wrench className="h-4 w-4" />
+
+    // 资源库图标
     case "术语库":
-    case "结构模板":
-    case "优化清单":
       return <Library className="h-4 w-4" />
+    case "结构模板":
+      return <Code className="h-4 w-4" />
+    case "优化清单":
+      return <ListChecks className="h-4 w-4" />
+
     default:
-      return null
+      return <BookOpen className="h-4 w-4" />
   }
 }
 
@@ -137,10 +165,28 @@ const DropdownNavItem = ({
   pathname: string
 }) => {
   const [isOpen, setIsOpen] = React.useState(false)
+  const dropdownRef = React.useRef<HTMLDivElement>(null)
   const isActive = item.children?.some((child: any) => pathname === child.href)
 
+  // 点击空白处关闭下拉菜单
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpen])
+
   return (
-    <div className="relative">
+    <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(

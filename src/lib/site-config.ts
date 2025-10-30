@@ -30,8 +30,24 @@ export const navigationConfig = {
       title: '知识中心',
       children: [
         {
+          title: '基础知识',
+          href: '/knowledge/basics',
+        },
+        {
+          title: 'GEO方法论',
+          href: '/knowledge/methodology',
+        },
+        {
           title: '操作教程',
           href: '/knowledge/guides',
+        },
+        {
+          title: '案例研究',
+          href: '/knowledge/cases',
+        },
+        {
+          title: '常见问答',
+          href: '/knowledge/faq',
         },
         {
           title: '深度报告',
