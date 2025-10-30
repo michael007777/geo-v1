@@ -15,7 +15,10 @@ import {
   FolderOpen,
   Library,
   Mail,
+  User,
 } from "lucide-react"
+import { LoginModalSimple } from "@/components/auth/login-modal-simple"
+import { googleOAuthService } from "@/lib/auth/google-oauth"
 
 const getIcon = (title: string) => {
   switch (title) {
@@ -179,35 +182,91 @@ const DropdownNavItem = ({
 }
 
 export const Navigation = () => {
+  const [isLoginModalOpen, setIsLoginModalOpen] = React.useState(false)
+  const [user, setUser] = React.useState<{ email: string; name: string } | null>(null)
+  const [isLoading, setIsLoading] = React.useState(false)
+
+  // 检查是否已登录
+  React.useEffect(() => {
+    const storedUser = localStorage.getItem('geo_user')
+    const isAuthenticated = localStorage.getItem('isAuthenticated')
+
+    if (storedUser && isAuthenticated === 'true') {
+      try {
+        setUser(JSON.parse(storedUser))
+      } catch (error) {
+        console.error('Failed to parse stored user:', error)
+      }
+    }
+  }, [])
+
+  const handleLogin = () => {
+    setIsLoginModalOpen(true)
+  }
+
+  const handleLogout = () => {
+    setUser(null)
+    // 使用Google OAuth服务登出
+    googleOAuthService().signOut()
+  }
+
+  const handleLoginSuccess = (userData: { email: string; name: string }) => {
+    setUser(userData)
+  }
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          <div className="flex items-center space-x-8">
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="h-10 w-10 rounded-xl bg-gradient-supabase shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                <Layers className="h-6 w-6 text-white relative z-10" />
-              </div>
-              <span className="hidden font-bold text-xl sm:inline-block text-foreground group-hover:text-primary transition-colors duration-300">
-                GEO Institute
-              </span>
-            </Link>
-
-            <DesktopNav />
-          </div>
-
-          <div className="flex items-center space-x-4">
-            <Button variant="outline" size="sm" asChild className="hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-md">
-              <Link href="/contact">
-                <Mail className="h-4 w-4 mr-2" />
-                联系我们
+    <>
+      <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            <div className="flex items-center space-x-8">
+              <Link href="/" className="flex items-center space-x-3 group">
+                <div className="h-10 w-10 rounded-xl bg-gradient-supabase shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <Layers className="h-6 w-6 text-white relative z-10" />
+                </div>
+                <span className="hidden font-bold text-xl sm:inline-block text-foreground group-hover:text-primary transition-colors duration-300">
+                  GEO Institute
+                </span>
               </Link>
-            </Button>
-            <MobileNav />
+
+              <DesktopNav />
+            </div>
+
+            <div className="flex items-center space-x-4">
+              {isLoading ? (
+                <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary" />
+              ) : user ? (
+                <div className="flex items-center space-x-3">
+                  <Button variant="ghost" size="sm" className="hover:bg-primary/10 transition-all duration-300">
+                    <User className="h-4 w-4 mr-2" />
+                    <span className="hidden sm:inline">{user.email}</span>
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={handleLogout} className="hover:bg-primary hover:text-primary-foreground transition-all duration-300">
+                    退出
+                  </Button>
+                </div>
+              ) : (
+                <Button
+                  size="sm"
+                  onClick={handleLogin}
+                  className="bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
+                >
+                  <User className="h-4 w-4 mr-2" />
+                  登录
+                </Button>
+              )}
+              <MobileNav />
+            </div>
           </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      <LoginModalSimple
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+        onLoginSuccess={handleLoginSuccess}
+      />
+    </>
   )
 }
