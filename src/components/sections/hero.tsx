@@ -142,7 +142,7 @@ export const HeroSection = () => {
           </p>
 
           {/* CTA按钮 - 简化样式 */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
             <Button size="lg" asChild className="supabase group shadow-lg hover:shadow-xl">
               <Link href="/about">
                 了解GEO优化
@@ -155,40 +155,123 @@ export const HeroSection = () => {
               </Link>
             </Button>
           </div>
-
-          {/* 核心指标 - 简化设计 */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-1">300%</div>
-              <div className="text-sm text-muted-foreground">AI引用率提升</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-1">85%</div>
-              <div className="text-sm text-muted-foreground">零点击搜索捕获</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-1">24/7</div>
-              <div className="text-sm text-muted-foreground">AI可见性保障</div>
-            </div>
-          </div>
         </div>
 
-        {/* 简化的核心价值对比 */}
-        <div className="mt-16 max-w-4xl mx-auto">
-          <div className="bg-card/50 backdrop-blur-sm rounded-2xl p-8 border border-border/30">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="text-xl font-semibold text-foreground mb-4">传统SEO</h3>
-                <div className="flex items-center space-x-3">
-                  <div className="h-2 w-2 rounded-full bg-blue-500" />
-                  <span className="text-muted-foreground">争取点击 → 链接排名 → 流量获取</span>
-                </div>
+        {/* 核心价值对比 - 优化样式 */}
+        <div className="mt-20 max-w-5xl mx-auto">
+          <div className="relative">
+            {/* 背景装饰 */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-primary/5 rounded-3xl blur-xl" />
+
+            <div className="relative bg-card/80 backdrop-blur-md rounded-3xl p-10 border border-border/20 shadow-xl">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-foreground mb-2">AI时代的搜索逻辑变革</h2>
+                <p className="text-muted-foreground">从获取流量到成为答案，从链接排名到影响输出</p>
               </div>
-              <div>
-                <h3 className="text-xl font-semibold text-foreground mb-4">GEO优化</h3>
-                <div className="flex items-center space-x-3">
-                  <div className="h-2 w-2 rounded-full bg-primary" />
-                  <span className="text-muted-foreground">成为答案 → 影响输出 → 建立权威</span>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                {/* 传统SEO */}
+                <div className="relative">
+                  <div className="absolute -top-3 -left-3">
+                    <div className="bg-blue-500 text-white text-xs font-medium px-3 py-1 rounded-full">
+                      传统模式
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-blue-500/10 to-transparent rounded-2xl p-8 border border-blue-500/20">
+                    <div className="flex items-center space-x-3 mb-6">
+                      <div className="h-3 w-3 rounded-full bg-blue-500 shadow-lg shadow-blue-500/50" />
+                      <h3 className="text-xl font-bold text-blue-400">传统SEO</h3>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="flex items-center space-x-4 group">
+                        <div className="h-8 w-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">
+                          1
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-foreground font-medium group-hover:text-blue-400 transition-colors">争取点击</div>
+                          <div className="text-sm text-muted-foreground">优化标题和描述吸引用户点击</div>
+                        </div>
+                      </div>
+
+                      <div className="w-px h-6 bg-border/50 ml-4" />
+
+                      <div className="flex items-center space-x-4 group">
+                        <div className="h-8 w-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">
+                          2
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-foreground font-medium group-hover:text-blue-400 transition-colors">链接排名</div>
+                          <div className="text-sm text-muted-foreground">通过关键词和反向链接提升排名</div>
+                        </div>
+                      </div>
+
+                      <div className="w-px h-6 bg-border/50 ml-4" />
+
+                      <div className="flex items-center space-x-4 group">
+                        <div className="h-8 w-8 rounded-full bg-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-sm">
+                          3
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-foreground font-medium group-hover:text-blue-400 transition-colors">流量获取</div>
+                          <div className="text-sm text-muted-foreground">获得网站访问和潜在客户</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* GEO优化 */}
+                <div className="relative">
+                  <div className="absolute -top-3 -right-3">
+                    <div className="bg-primary text-white text-xs font-medium px-3 py-1 rounded-full">
+                      GEO模式
+                    </div>
+                  </div>
+
+                  <div className="bg-gradient-to-br from-primary/10 to-transparent rounded-2xl p-8 border border-primary/20">
+                    <div className="flex items-center space-x-3 mb-6">
+                      <div className="h-3 w-3 rounded-full bg-primary shadow-lg shadow-primary/50 animate-pulse" />
+                      <h3 className="text-xl font-bold text-primary">GEO优化</h3>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div className="flex items-center space-x-4 group">
+                        <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
+                          1
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-foreground font-medium group-hover:text-primary transition-colors">成为答案</div>
+                          <div className="text-sm text-muted-foreground">让AI直接引用您的内容作为答案</div>
+                        </div>
+                      </div>
+
+                      <div className="w-px h-6 bg-border/50 ml-4" />
+
+                      <div className="flex items-center space-x-4 group">
+                        <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
+                          2
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-foreground font-medium group-hover:text-primary transition-colors">影响输出</div>
+                          <div className="text-sm text-muted-foreground">塑造AI生成内容的质量和方向</div>
+                        </div>
+                      </div>
+
+                      <div className="w-px h-6 bg-border/50 ml-4" />
+
+                      <div className="flex items-center space-x-4 group">
+                        <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold text-sm">
+                          3
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-foreground font-medium group-hover:text-primary transition-colors">建立权威</div>
+                          <div className="text-sm text-muted-foreground">成为AI知识图谱中的可信来源</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
