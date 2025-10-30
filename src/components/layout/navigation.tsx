@@ -80,7 +80,7 @@ const MobileNav = () => {
       </Button>
 
       {isOpen && (
-        <div className="fixed top-16 left-0 right-0 z-50 border-b border-border/50 bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 animate-fade-in-up">
+        <div className="fixed top-20 left-0 right-0 z-50 border-b border-border/50 bg-background/95 backdrop-blur-md supports-[backdrop-filter]:bg-background/80 animate-fade-in-up">
           <div className="container mx-auto px-4 py-6 space-y-2 max-h-[80vh] overflow-y-auto">
             {navigationConfig.mainNav.map((item) => (
               <div key={item.href || item.title} className="rounded-lg">
@@ -133,7 +133,7 @@ const DesktopNav = () => {
               key={item.href}
               href={item.href!}
               className={cn(
-                "relative px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-105",
+                "relative px-5 py-3 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-105",
                 pathname === item.href ? "text-primary bg-primary/10" : "text-muted-foreground hover:text-foreground"
               )}
             >
@@ -190,7 +190,7 @@ const DropdownNavItem = ({
       <button
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          "flex items-center space-x-2 px-4 py-2 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-105",
+          "flex items-center space-x-2 px-5 py-3 rounded-lg transition-all duration-300 hover:bg-primary/10 hover:text-primary hover:scale-105",
           isActive ? "text-primary bg-primary/10" : "text-muted-foreground hover:text-foreground"
         )}
       >
@@ -264,12 +264,12 @@ export const Navigation = () => {
     <>
       <header className="sticky top-0 z-40 w-full border-b border-border/50 bg-background/80 backdrop-blur-md supports-[backdrop-filter]:bg-background/60">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex h-16 items-center justify-between">
+          <div className="flex h-20 items-center justify-between py-1">
             <div className="flex items-center space-x-8">
               <Link href="/" className="flex items-center space-x-3 group">
-                <div className="h-10 w-10 rounded-xl bg-gradient-supabase shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center relative overflow-hidden">
+                <div className="h-11 w-11 rounded-xl bg-gradient-supabase shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <Layers className="h-6 w-6 text-white relative z-10" />
+                  <Layers className="h-7 w-7 text-white relative z-10" />
                 </div>
                 <span className="hidden font-bold text-xl sm:inline-block text-foreground group-hover:text-primary transition-colors duration-300">
                   GEO Institute
