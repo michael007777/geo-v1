@@ -65,6 +65,10 @@ export const navigationConfig = {
       ],
     },
     {
+      title: '工具查询',
+      href: '/tools',
+    },
+    {
       title: '联系我们',
       href: '/contact',
     },
