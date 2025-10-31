@@ -15,7 +15,7 @@ export const siteConfig: SiteConfig = {
 export const navigationConfig = {
   mainNav: [
     {
-      title: '关于GEO',
+      title: 'AI平台分析',
       href: '/about',
     },
     {
@@ -94,7 +94,7 @@ export const navigationConfig = {
       title: '开始使用',
       items: [
         {
-          title: 'GEO简介',
+          title: 'AI平台分析',
           href: '/about',
           icon: 'BookOpen',
         },
@@ -174,6 +174,13 @@ export const geoKeywords = [
   'AI搜索优化',
   'ChatGPT优化',
   'Gemini优化',
+  'Claude优化',
+  '文心一言优化',
+  '豆包优化',
+  '通义千问优化',
+  'Kimi优化',
+  'AI推荐逻辑',
+  'AI选源机制',
   'AI内容索引',
   '语义搜索',
   '实体图谱',
@@ -191,4 +198,5 @@ export const geoCategories = {
   cases: ['B2B', 'B2C', '内容创作者', '电商', '教育', '金融'],
   knowledge: ['教程', '研究', '工具', '模板', '指南'],
   resources: ['术语', '清单', '模板', '标准'],
+  platforms: ['ChatGPT', 'Claude', 'Gemini', '文心一言', '豆包', '通义千问', 'Kimi', 'Perplexity'],
 }

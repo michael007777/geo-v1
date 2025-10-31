@@ -21,7 +21,7 @@ export const HeroSection = () => {
           </div>
 
           {/* 主标题 - 增加文字间距和下方距离 */}
-          <h1 className="text-4xl md:text-6xl font-bold tracking-wide mb-12">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-wider mb-12">
             <span className="block mb-3 leading-relaxed">让AI像人类一样</span>
             <GradientText className="block leading-relaxed">理解您的内容</GradientText>
           </h1>

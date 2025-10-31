@@ -5,12 +5,12 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Section, SectionContainer, SectionHeader, SectionTitle, SectionSubtitle } from "@/components/ui/section"
 import { GradientText } from "@/components/ui/gradient-text"
-import { ArrowRight, Brain, Target, Shield, TrendingUp, Users, Sparkles } from "lucide-react"
+import { ArrowRight, Brain, Target, Shield, TrendingUp, Users, Sparkles, Search, Globe, Zap, BookOpen, CheckCircle, AlertCircle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "关于GEO - 生成式引擎优化详解",
-  description: "深入了解GEO（生成式引擎优化）的定义、原理和与传统SEO的区别。让AI像人类一样理解您的内容，在AI搜索新时代建立权威性。",
-  keywords: ["GEO定义", "生成式引擎优化", "AI搜索优化", "SEO vs GEO", "AI时代营销", "ChatGPT优化"],
+  title: "AI平台推荐逻辑分析 - GEO优化策略",
+  description: "深入分析各大AI平台（ChatGPT、Claude、Gemini等）的推荐逻辑、选源机制和呈现方式，为GEO优化提供精准策略指导。",
+  keywords: ["AI推荐逻辑", "GEO优化", "ChatGPT推荐", "Claude搜索", "Gemini算法", "文心一言优化", "豆包推荐", "AI选源机制"],
 }
 
 export default function AboutPage() {
@@ -20,13 +20,13 @@ export default function AboutPage() {
       <section className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge className="mb-6">GEO基础知识</Badge>
+            <Badge className="mb-6">AI平台分析</Badge>
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-              什么是
-              <GradientText>生成式引擎优化</GradientText>
+              各大AI平台的
+              <GradientText>推荐逻辑分析</GradientText>
             </h1>
             <p className="text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              GEO是为生成式AI模型优化内容的过程，确保您的品牌信息能被AI准确理解、抓取并整合到生成的对话式回答中。
+              深入解析ChatGPT、Claude、Gemini等主流AI平台的选源机制、检索逻辑和呈现方式，为精准GEO优化提供策略指导。
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
@@ -45,85 +45,492 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Definition Section */}
+      {/* AI Platform Overview Section */}
       <Section>
         <SectionContainer>
-          <div className="max-w-4xl mx-auto">
-            <SectionHeader className="text-left">
+          <div className="max-w-6xl mx-auto">
+            <SectionHeader>
+              <Badge className="mb-4">平台分析</Badge>
               <SectionTitle className="text-3xl md:text-4xl">
-                GEO的核心定义
+                主流AI平台
+                <GradientText>推荐逻辑概览</GradientText>
               </SectionTitle>
               <SectionSubtitle className="text-lg">
-                从"争取点击"到"成为答案"的范式转变
+                深入了解各大AI平台的检索机制、选源偏好和呈现方式
               </SectionSubtitle>
             </SectionHeader>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div className="space-y-6">
-                <h3 className="text-2xl font-semibold">传统 SEO</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="h-2 w-2 rounded-full bg-blue-500 mt-2" />
-                    <div>
-                      <div className="font-medium">关键词排名</div>
-                      <div className="text-sm text-muted-foreground">
-                        优化页面在搜索结果中的排名位置
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="h-2 w-2 rounded-full bg-blue-500 mt-2" />
-                    <div>
-                      <div className="font-medium">流量获取</div>
-                      <div className="text-sm text-muted-foreground">
-                        争取用户点击进入网站
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="h-2 w-2 rounded-full bg-blue-500 mt-2" />
-                    <div>
-                      <div className="font-medium">链接建设</div>
-                      <div className="text-sm text-muted-foreground">
-                        建立外部链接提升权重
-                      </div>
-                    </div>
-                  </div>
-                </div>
+            {/* Comparison Table */}
+            <div className="mb-12">
+              <div className="overflow-x-auto">
+                <table className="w-full max-w-6xl mx-auto border-collapse rounded-lg overflow-hidden">
+                  <thead>
+                    <tr className="bg-gradient-to-r from-primary/5 to-secondary/5">
+                      <th className="text-left py-5 px-8 font-semibold w-1/5">平台</th>
+                      <th className="text-center py-5 px-8 font-semibold w-1/6">默认联网</th>
+                      <th className="text-center py-5 px-8 font-semibold w-1/6">引用外显度</th>
+                      <th className="text-right py-5 px-8 font-semibold w-2/5">选源偏好</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr className="border-b hover:bg-muted/30 transition-colors">
+                      <td className="py-5 px-8 font-medium w-1/5">Perplexity</td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-green-500">是</Badge></td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="secondary">高</Badge></td>
+                      <td className="py-5 px-8 text-right w-2/5">多源检索，偏时效与可核验</td>
+                    </tr>
+                    <tr className="border-b hover:bg-muted/30 transition-colors">
+                      <td className="py-5 px-8 font-medium w-1/5">Claude</td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-blue-500">按需</Badge></td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="secondary">高</Badge></td>
+                      <td className="py-5 px-8 text-right w-2/5">克制检索，重可信与安全</td>
+                    </tr>
+                    <tr className="border-b hover:bg-muted/30 transition-colors">
+                      <td className="py-5 px-8 font-medium w-1/5">ChatGPT</td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-blue-500">按需</Badge></td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="secondary">高</Badge></td>
+                      <td className="py-5 px-8 text-right w-2/5">结构化信息，权威站优先</td>
+                    </tr>
+                    <tr className="border-b hover:bg-muted/30 transition-colors">
+                      <td className="py-5 px-8 font-medium w-1/5">Gemini</td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-green-500">是</Badge></td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="secondary">高</Badge></td>
+                      <td className="py-5 px-8 text-right w-2/5">Google排序+E-E-A-T</td>
+                    </tr>
+                    <tr className="border-b hover:bg-muted/30 transition-colors">
+                      <td className="py-5 px-8 font-medium w-1/5">文心一言</td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-green-500">是</Badge></td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="outline">中</Badge></td>
+                      <td className="py-5 px-8 text-right w-2/5">百度系生态，百科/百家号</td>
+                    </tr>
+                    <tr className="border-b hover:bg-muted/30 transition-colors">
+                      <td className="py-5 px-8 font-medium w-1/5">豆包</td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-green-500">是</Badge></td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="outline">低-中</Badge></td>
+                      <td className="py-5 px-8 text-right w-2/5">字节系内容，强时效性</td>
+                    </tr>
+                    <tr className="border-b hover:bg-muted/30 transition-colors">
+                      <td className="py-5 px-8 font-medium w-1/5">通义千问</td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-blue-500">支持</Badge></td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="outline">中</Badge></td>
+                      <td className="py-5 px-8 text-right w-2/5">结构化数据，阿里生态</td>
+                    </tr>
+                    <tr className="hover:bg-muted/30 transition-colors">
+                      <td className="py-5 px-8 font-medium w-1/5">Kimi</td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-blue-500">支持</Badge></td>
+                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="secondary">中-高</Badge></td>
+                      <td className="py-5 px-8 text-right w-2/5">多步代理式检索，深度研究</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
+            </div>
+          </div>
+        </SectionContainer>
+      </Section>
 
-              <div className="space-y-6">
-                <h3 className="text-2xl font-semibold">GEO 优化</h3>
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-3">
-                    <div className="h-2 w-2 rounded-full bg-green-500 mt-2" />
+      {/* Platform Details Section */}
+      <Section className="bg-muted/30">
+        <SectionContainer>
+          <div className="max-w-6xl mx-auto">
+            <SectionHeader>
+              <SectionTitle className="text-3xl md:text-4xl">
+                详细解析
+                <GradientText>各平台特点</GradientText>
+              </SectionTitle>
+              <SectionSubtitle className="text-lg">
+                针对性的GEO优化策略和实操建议
+              </SectionSubtitle>
+            </SectionHeader>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Perplexity */}
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center space-x-3">
+                    <div className="h-10 w-10 rounded-lg bg-green-100 flex items-center justify-center">
+                      <Search className="h-5 w-5 text-green-600" />
+                    </div>
                     <div>
-                      <div className="font-medium">内容理解</div>
-                      <div className="text-sm text-muted-foreground">
-                        让AI准确理解内容的含义和权威性
+                      <CardTitle className="text-xl">Perplexity</CardTitle>
+                      <CardDescription>实时多源聚合专家</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-start space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                    <div>
+                      <div className="font-medium text-sm">检索特点</div>
+                      <div className="text-xs text-muted-foreground">默认实时联网搜索，聚合多源结果</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                    <div>
+                      <div className="font-medium text-sm">引用方式</div>
+                      <div className="text-xs text-muted-foreground">答案段落后直接展示来源链接</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <Zap className="h-4 w-4 text-yellow-500 mt-0.5" />
+                    <div>
+                      <div className="font-medium text-sm">GEO策略</div>
+                      <div className="text-xs text-muted-foreground">使用表格/清单结构，部署到权威域</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Claude */}
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center space-x-3">
+                    <div className="h-10 w-10 rounded-lg bg-blue-100 flex items-center justify-center">
+                      <BookOpen className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl">Claude</CardTitle>
+                      <CardDescription>稳健可信的内容顾问</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-start space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                    <div>
+                      <div className="font-medium text-sm">检索特点</div>
+                      <div className="text-xs text-muted-foreground">按需触发联网，重可信与安全</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                    <div>
+                      <div className="font-medium text-sm">引用方式</div>
+                      <div className="text-xs text-muted-foreground">答案处直接标注来源，强调可追溯</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <Zap className="h-4 w-4 text-yellow-500 mt-0.5" />
+                    <div>
+                      <div className="font-medium text-sm">GEO策略</div>
+                      <div className="text-xs text-muted-foreground">准备自包含定义段+FAQ模块</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* ChatGPT */}
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center space-x-3">
+                    <div className="h-10 w-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+                      <Globe className="h-5 w-5 text-emerald-600" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl">ChatGPT</CardTitle>
+                      <CardDescription>消费问答与购物专家</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-start space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                    <div>
+                      <div className="font-medium text-sm">检索特点</div>
+                      <div className="text-xs text-muted-foreground">按需联网，支持结构化购物数据</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                    <div>
+                      <div className="font-medium text-sm">引用方式</div>
+                      <div className="text-xs text-muted-foreground">展示相关网页链接和引用</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <Zap className="h-4 w-4 text-yellow-500 mt-0.5" />
+                    <div>
+                      <div className="font-medium text-sm">GEO策略</div>
+                      <div className="text-xs text-muted-foreground">提供结构化参数/价格/对比表</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* Gemini */}
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center space-x-3">
+                    <div className="h-10 w-10 rounded-lg bg-purple-100 flex items-center justify-center">
+                      <Brain className="h-5 w-5 text-purple-600" />
+                    </div>
+                    <div>
+                      <CardTitle className="text-xl">Gemini</CardTitle>
+                      <CardDescription>Google生态深度整合</CardDescription>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-4">
+                  <div className="flex items-start space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                    <div>
+                      <div className="font-medium text-sm">检索特点</div>
+                      <div className="text-xs text-muted-foreground">依托Google搜索和SGE深度耦合</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <CheckCircle className="h-4 w-4 text-green-500 mt-0.5" />
+                    <div>
+                      <div className="font-medium text-sm">引用方式</div>
+                      <div className="text-xs text-muted-foreground">答案旁展示引用，来源广泛</div>
+                    </div>
+                  </div>
+                  <div className="flex items-start space-x-2">
+                    <Zap className="h-4 w-4 text-yellow-500 mt-0.5" />
+                    <div>
+                      <div className="font-medium text-sm">GEO策略</div>
+                      <div className="text-xs text-muted-foreground">做好SEO基础+AEO片段化答案</div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </SectionContainer>
+      </Section>
+
+      {/* Chinese Platforms Section */}
+      <Section>
+        <SectionContainer>
+          <div className="max-w-6xl mx-auto">
+            <SectionHeader>
+              <Badge className="mb-4">中文平台</Badge>
+              <SectionTitle className="text-3xl md:text-4xl">
+                中文AI平台
+                <GradientText>生态特点</GradientText>
+              </SectionTitle>
+              <SectionSubtitle className="text-lg">
+                针对中文环境的特殊优化策略
+              </SectionSubtitle>
+            </SectionHeader>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* 文心一言 */}
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-lg">文心一言</CardTitle>
+                    <Badge variant="outline">百度系</Badge>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center space-x-2">
+                    <AlertCircle className="h-4 w-4 text-blue-500" />
+                    <span className="text-sm font-medium">搜索组件</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    默认融合百度搜索，依赖百科、百家号等自家生态
+                  </p>
+                  <div className="bg-primary/20 backdrop-blur-sm text-primary-foreground p-3 rounded-lg border border-primary/30">
+                    <div className="text-xs font-medium mb-1">优化要点</div>
+                    <ul className="text-xs space-y-1">
+                      <li>• 建设百家号/百科词条</li>
+                      <li>• 高质量百科式定义段</li>
+                      <li>• 结构化中文要点</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* 豆包 */}
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-lg">豆包</CardTitle>
+                    <Badge variant="outline">字节系</Badge>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center space-x-2">
+                    <AlertCircle className="h-4 w-4 text-green-500" />
+                    <span className="text-sm font-medium">强时效性</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    基于头条搜索，强调强时效问答，外显引用克制
+                  </p>
+                  <div className="bg-primary/20 backdrop-blur-sm text-primary-foreground p-3 rounded-lg border border-primary/30">
+                    <div className="text-xs font-medium mb-1">优化要点</div>
+                    <ul className="text-xs space-y-1">
+                      <li>• 抖音/头条阵地建设</li>
+                      <li>• 三行要点卡制作</li>
+                      <li>• 高时效内容更新</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+
+              {/* 通义千问 */}
+              <Card className="hover:shadow-lg transition-shadow">
+                <CardHeader>
+                  <div className="flex items-center justify-between">
+                    <CardTitle className="text-lg">通义千问</CardTitle>
+                    <Badge variant="outline">阿里系</Badge>
+                  </div>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <div className="flex items-center space-x-2">
+                    <AlertCircle className="h-4 w-4 text-orange-500" />
+                    <span className="text-sm font-medium">电商友好</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground">
+                    支持联网搜索，对价格/性价比等可比要素友好
+                  </p>
+                  <div className="bg-primary/20 backdrop-blur-sm text-primary-foreground p-3 rounded-lg border border-primary/30">
+                    <div className="text-xs font-medium mb-1">优化要点</div>
+                    <ul className="text-xs space-y-1">
+                      <li>• 清晰价格/参数表</li>
+                      <li>• 阿里生态一致口径</li>
+                      <li>• 对比/适配表制作</li>
+                    </ul>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </SectionContainer>
+      </Section>
+
+      {/* GEO Strategy Section */}
+      <Section className="bg-muted/30">
+        <SectionContainer>
+          <div className="max-w-6xl mx-auto">
+            <SectionHeader>
+              <Badge className="mb-4">优化策略</Badge>
+              <SectionTitle className="text-3xl md:text-4xl">
+                跨平台GEO
+                <GradientText>优化清单</GradientText>
+              </SectionTitle>
+              <SectionSubtitle className="text-lg">
+                适用于所有AI平台的通用优化策略
+              </SectionSubtitle>
+            </SectionHeader>
+
+            <div className="max-w-6xl mx-auto">
+              <Card className="bg-card/50 backdrop-blur-sm border-border/50">
+                <CardHeader className="pb-4">
+                  <div className="flex justify-center items-center space-x-8">
+                    <div className="h-16 w-16 rounded-xl bg-green-100 flex items-center justify-center">
+                      <CheckCircle className="h-8 w-8 text-green-600" />
+                    </div>
+                    <div className="h-px bg-border flex-1 max-w-sm" />
+                    <div className="h-16 w-16 rounded-xl bg-blue-100 flex items-center justify-center">
+                      <Target className="h-8 w-8 text-blue-600" />
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    {/* 跨平台共性策略 */}
+                    <div className="space-y-6">
+                      <div className="pb-4 border-b border-border/30">
+                        <h3 className="text-lg font-semibold text-center text-green-600">跨平台共性策略</h3>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="flex items-start space-x-3 p-4 rounded-lg bg-muted/50 hover:bg-muted/60 transition-colors border border-border/30">
+                          <div className="h-3 w-3 rounded-full bg-green-500 mt-1 flex-shrink-0" />
+                          <div>
+                            <div className="font-semibold text-base mb-1 text-green-600">页面结构模块化</div>
+                            <div className="text-sm text-muted-foreground">
+                              H2/H3、要点列表、FAQ块、对比表
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-3 p-4 rounded-lg bg-muted/50 hover:bg-muted/60 transition-colors border border-border/30">
+                          <div className="h-3 w-3 rounded-full bg-blue-500 mt-1 flex-shrink-0" />
+                          <div>
+                            <div className="font-semibold text-base mb-1 text-blue-600">权威引文+出处链接</div>
+                            <div className="text-sm text-muted-foreground">
+                              媒体/报告/标准/学术来源
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-3 p-4 rounded-lg bg-muted/50 hover:bg-muted/60 transition-colors border border-border/30">
+                          <div className="h-3 w-3 rounded-full bg-purple-500 mt-1 flex-shrink-0" />
+                          <div>
+                            <div className="font-semibold text-base mb-1 text-purple-600">机器可读格式</div>
+                            <div className="text-sm text-muted-foreground">
+                              Schema/表格/清单/参数矩阵
+                            </div>
+                          </div>
+                        </div>
+                        <div className="flex items-start space-x-3 p-4 rounded-lg bg-muted/50 hover:bg-muted/60 transition-colors border border-border/30">
+                          <div className="h-3 w-3 rounded-full bg-amber-500 mt-1 flex-shrink-0" />
+                          <div>
+                            <div className="font-semibold text-base mb-1 text-amber-600">多生态分发</div>
+                            <div className="text-sm text-muted-foreground">
+                              站内权威页+社区/媒体/百科
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 平台定向策略 */}
+                    <div className="space-y-6">
+                      <div className="pb-4 border-b border-border/30">
+                        <h3 className="text-lg font-semibold text-center text-blue-600">平台定向策略</h3>
+                      </div>
+                      <div className="space-y-4 h-full">
+                        <div className="bg-muted/50 backdrop-blur-sm p-5 rounded-xl border border-border/50 hover:bg-muted/60 transition-colors">
+                          <div className="flex items-center space-x-2 mb-3">
+                            <div className="h-2 w-2 rounded-full bg-blue-500" />
+                            <div className="font-semibold text-sm text-blue-600">国际平台</div>
+                          </div>
+                          <ul className="text-sm space-y-2">
+                            <li className="flex items-start">
+                              <span className="mr-2">•</span>
+                              <span>对比/榜单页面+核心参数表</span>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="mr-2">•</span>
+                              <span>2-3句标准定义段</span>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="mr-2">•</span>
+                              <span>重要结论紧邻权威来源</span>
+                            </li>
+                          </ul>
+                        </div>
+                        <div className="bg-muted/50 backdrop-blur-sm p-5 py-8 rounded-xl border border-border/50 hover:bg-muted/60 transition-colors flex flex-col justify-center">
+                          <div className="flex items-center space-x-2 mb-3">
+                            <div className="h-2 w-2 rounded-full bg-purple-500" />
+                            <div className="font-semibold text-sm text-purple-600">实施建议</div>
+                          </div>
+                          <ul className="text-sm space-y-2">
+                            <li className="flex items-start">
+                              <span className="mr-2">•</span>
+                              <span>定期更新内容保持时效性</span>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="mr-2">•</span>
+                              <span>建立多平台分发渠道</span>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="mr-2">•</span>
+                              <span>持续监控AI引用表现</span>
+                            </li>
+                            <li className="flex items-start">
+                              <span className="mr-2">•</span>
+                              <span>多增加流程化内容（流程图/步骤清单），有利于 Agent 型检索综合</span>
+                            </li>
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="h-2 w-2 rounded-full bg-green-500 mt-2" />
-                    <div>
-                      <div className="font-medium">答案呈现</div>
-                      <div className="text-sm text-muted-foreground">
-                        成为AI生成回答的一部分
-                      </div>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-3">
-                    <div className="h-2 w-2 rounded-full bg-green-500 mt-2" />
-                    <div>
-                      <div className="font-medium">权威建立</div>
-                      <div className="text-sm text-muted-foreground">
-                        在AI知识图谱中建立品牌权威
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             </div>
           </div>
         </SectionContainer>
@@ -244,44 +651,44 @@ export default function AboutPage() {
                 </thead>
                 <tbody>
                   <tr className="border-b">
-                    <td className="py-4 px-6 font-medium">核心目标</td>
-                    <td className="py-4 px-6">获取网站流量</td>
-                    <td className="py-4 px-6">成为AI答案来源</td>
+                    <td className="py-5 px-8 font-medium w-1/5">核心目标</td>
+                    <td className="py-5 px-8 text-right w-2/5">获取网站流量</td>
+                    <td className="py-5 px-8 text-right w-2/5">成为AI答案来源</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-4 px-6 font-medium">优化重点</td>
-                    <td className="py-4 px-6">关键词排名、链接建设</td>
-                    <td className="py-4 px-6">内容权威性、结构化数据</td>
+                    <td className="py-5 px-8 font-medium w-1/5">优化重点</td>
+                    <td className="py-5 px-8 text-right w-2/5">关键词排名、链接建设</td>
+                    <td className="py-5 px-8 text-right w-2/5">内容权威性、结构化数据</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-4 px-6 font-medium">用户行为</td>
-                    <td className="py-4 px-6">点击链接、浏览页面</td>
-                    <td className="py-4 px-6">直接获取AI回答</td>
+                    <td className="py-5 px-8 font-medium w-1/5">用户行为</td>
+                    <td className="py-5 px-8 text-right w-2/5">点击链接、浏览页面</td>
+                    <td className="py-5 px-8 text-right w-2/5">直接获取AI回答</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-4 px-6 font-medium">成功指标</td>
-                    <td className="py-4 px-6">排名位置、点击率</td>
-                    <td className="py-4 px-6">AI引用率、呈现质量</td>
+                    <td className="py-5 px-8 font-medium w-1/5">成功指标</td>
+                    <td className="py-5 px-8 text-right w-2/5">排名位置、点击率</td>
+                    <td className="py-5 px-8 text-right w-2/5">AI引用率、呈现质量</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-4 px-6 font-medium">内容要求</td>
-                    <td className="py-4 px-6">关键词优化、标题标签</td>
-                    <td className="py-4 px-6">事实准确性、结构清晰度</td>
+                    <td className="py-5 px-8 font-medium w-1/5">内容要求</td>
+                    <td className="py-5 px-8 text-right w-2/5">关键词优化、标题标签</td>
+                    <td className="py-5 px-8 text-right w-2/5">事实准确性、结构清晰度</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-4 px-6 font-medium">技术基础</td>
-                    <td className="py-4 px-6">页面优化、站点架构</td>
-                    <td className="py-4 px-6">Schema标记、实体图谱</td>
+                    <td className="py-5 px-8 font-medium w-1/5">技术基础</td>
+                    <td className="py-5 px-8 text-right w-2/5">页面优化、站点架构</td>
+                    <td className="py-5 px-8 text-right w-2/5">Schema标记、实体图谱</td>
                   </tr>
                   <tr className="border-b">
-                    <td className="py-4 px-6 font-medium">竞争环境</td>
-                    <td className="py-4 px-6">有限的排名位置</td>
-                    <td className="py-4 px-6">开放的答案贡献</td>
+                    <td className="py-5 px-8 font-medium w-1/5">竞争环境</td>
+                    <td className="py-5 px-8 text-right w-2/5">有限的排名位置</td>
+                    <td className="py-5 px-8 text-right w-2/5">开放的答案贡献</td>
                   </tr>
                   <tr>
-                    <td className="py-4 px-6 font-medium">长期价值</td>
-                    <td className="py-4 px-6">流量获取能力</td>
-                    <td className="py-4 px-6">AI权威性建立</td>
+                    <td className="py-5 px-8 font-medium w-1/5">长期价值</td>
+                    <td className="py-5 px-8 text-right w-2/5">流量获取能力</td>
+                    <td className="py-5 px-8 text-right w-2/5">AI权威性建立</td>
                   </tr>
                 </tbody>
               </table>
@@ -296,10 +703,10 @@ export default function AboutPage() {
           <div className="max-w-3xl mx-auto text-center">
             <Sparkles className="h-12 w-12 text-primary mx-auto mb-4" />
             <h2 className="text-3xl font-bold mb-4">
-              准备开始您的GEO之旅？
+              开始您的AI平台优化之旅？
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              了解我们的五步法框架，或者直接与我们的专家团队进行免费咨询。
+              基于各平台推荐逻辑制定精准优化策略，让您的品牌在AI时代脱颖而出。
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
