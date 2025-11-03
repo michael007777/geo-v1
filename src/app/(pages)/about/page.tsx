@@ -62,64 +62,64 @@ export default function AboutPage() {
 
             {/* Comparison Table */}
             <div className="mb-12">
-              <div className="overflow-x-auto">
-                <table className="w-full max-w-6xl mx-auto border-collapse rounded-lg overflow-hidden">
+              <div className="overflow-x-auto rounded-lg border border-border/50">
+                <table className="w-full min-w-[800px] border-collapse">
                   <thead>
-                    <tr className="bg-gradient-to-r from-primary/5 to-secondary/5">
-                      <th className="text-left py-5 px-8 font-semibold w-1/5">平台</th>
-                      <th className="text-center py-5 px-8 font-semibold w-1/6">默认联网</th>
-                      <th className="text-center py-5 px-8 font-semibold w-1/6">引用外显度</th>
-                      <th className="text-right py-5 px-8 font-semibold w-2/5">选源偏好</th>
+                    <tr className="bg-gradient-to-r from-primary/10 to-secondary/10 border-b border-border/30">
+                      <th className="text-left py-4 px-6 font-semibold">平台</th>
+                      <th className="text-center py-4 px-6 font-semibold min-w-[100px]">默认联网</th>
+                      <th className="text-center py-4 px-6 font-semibold min-w-[100px]">引用外显度</th>
+                      <th className="text-left py-4 px-6 font-semibold">选源偏好</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr className="border-b hover:bg-muted/30 transition-colors">
-                      <td className="py-5 px-8 font-medium w-1/5">Perplexity</td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-green-500">是</Badge></td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="secondary">高</Badge></td>
-                      <td className="py-5 px-8 text-right w-2/5">多源检索，偏时效与可核验</td>
+                    <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                      <td className="py-4 px-6 font-medium">Perplexity</td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-emerald-100 text-emerald-700 border-emerald-200">是</Badge></td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-blue-100 text-blue-700 border-blue-200">高</Badge></td>
+                      <td className="py-4 px-6 text-muted-foreground">多源检索，偏时效与可核验</td>
                     </tr>
-                    <tr className="border-b hover:bg-muted/30 transition-colors">
-                      <td className="py-5 px-8 font-medium w-1/5">Claude</td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-blue-500">按需</Badge></td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="secondary">高</Badge></td>
-                      <td className="py-5 px-8 text-right w-2/5">克制检索，重可信与安全</td>
+                    <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                      <td className="py-4 px-6 font-medium">Claude</td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-amber-100 text-amber-700 border-amber-200">按需</Badge></td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-blue-100 text-blue-700 border-blue-200">高</Badge></td>
+                      <td className="py-4 px-6 text-muted-foreground">克制检索，重可信与安全</td>
                     </tr>
-                    <tr className="border-b hover:bg-muted/30 transition-colors">
-                      <td className="py-5 px-8 font-medium w-1/5">ChatGPT</td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-blue-500">按需</Badge></td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="secondary">高</Badge></td>
-                      <td className="py-5 px-8 text-right w-2/5">结构化信息，权威站优先</td>
+                    <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                      <td className="py-4 px-6 font-medium">ChatGPT</td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-amber-100 text-amber-700 border-amber-200">按需</Badge></td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-blue-100 text-blue-700 border-blue-200">高</Badge></td>
+                      <td className="py-4 px-6 text-muted-foreground">结构化信息，权威站优先</td>
                     </tr>
-                    <tr className="border-b hover:bg-muted/30 transition-colors">
-                      <td className="py-5 px-8 font-medium w-1/5">Gemini</td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-green-500">是</Badge></td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="secondary">高</Badge></td>
-                      <td className="py-5 px-8 text-right w-2/5">Google排序+E-E-A-T</td>
+                    <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                      <td className="py-4 px-6 font-medium">Gemini</td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-emerald-100 text-emerald-700 border-emerald-200">是</Badge></td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-blue-100 text-blue-700 border-blue-200">高</Badge></td>
+                      <td className="py-4 px-6 text-muted-foreground">Google排序+E-E-A-T</td>
                     </tr>
-                    <tr className="border-b hover:bg-muted/30 transition-colors">
-                      <td className="py-5 px-8 font-medium w-1/5">文心一言</td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-green-500">是</Badge></td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="outline">中</Badge></td>
-                      <td className="py-5 px-8 text-right w-2/5">百度系生态，百科/百家号</td>
+                    <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                      <td className="py-4 px-6 font-medium">文心一言</td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-emerald-100 text-emerald-700 border-emerald-200">是</Badge></td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-gray-100 text-gray-700 border-gray-200">中</Badge></td>
+                      <td className="py-4 px-6 text-muted-foreground">百度系生态，百科/百家号</td>
                     </tr>
-                    <tr className="border-b hover:bg-muted/30 transition-colors">
-                      <td className="py-5 px-8 font-medium w-1/5">豆包</td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-green-500">是</Badge></td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="outline">低-中</Badge></td>
-                      <td className="py-5 px-8 text-right w-2/5">字节系内容，强时效性</td>
+                    <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                      <td className="py-4 px-6 font-medium">豆包</td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-emerald-100 text-emerald-700 border-emerald-200">是</Badge></td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-gray-100 text-gray-700 border-gray-200">低-中</Badge></td>
+                      <td className="py-4 px-6 text-muted-foreground">字节系内容，强时效性</td>
                     </tr>
-                    <tr className="border-b hover:bg-muted/30 transition-colors">
-                      <td className="py-5 px-8 font-medium w-1/5">通义千问</td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-blue-500">支持</Badge></td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="outline">中</Badge></td>
-                      <td className="py-5 px-8 text-right w-2/5">结构化数据，阿里生态</td>
+                    <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                      <td className="py-4 px-6 font-medium">通义千问</td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-sky-100 text-sky-700 border-sky-200">支持</Badge></td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-gray-100 text-gray-700 border-gray-200">中</Badge></td>
+                      <td className="py-4 px-6 text-muted-foreground">结构化数据，阿里生态</td>
                     </tr>
-                    <tr className="hover:bg-muted/30 transition-colors">
-                      <td className="py-5 px-8 font-medium w-1/5">Kimi</td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge className="bg-blue-500">支持</Badge></td>
-                      <td className="py-5 px-8 text-center w-1/6"><Badge variant="secondary">中-高</Badge></td>
-                      <td className="py-5 px-8 text-right w-2/5">多步代理式检索，深度研究</td>
+                    <tr className="hover:bg-muted/20 transition-colors">
+                      <td className="py-4 px-6 font-medium">Kimi</td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-sky-100 text-sky-700 border-sky-200">支持</Badge></td>
+                      <td className="py-4 px-6 text-center"><Badge className="bg-indigo-100 text-indigo-700 border-indigo-200">中-高</Badge></td>
+                      <td className="py-4 px-6 text-muted-foreground">多步代理式检索，深度研究</td>
                     </tr>
                   </tbody>
                 </table>
@@ -143,7 +143,7 @@ export default function AboutPage() {
               </SectionSubtitle>
             </SectionHeader>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {/* Perplexity */}
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
@@ -315,7 +315,7 @@ export default function AboutPage() {
               </SectionSubtitle>
             </SectionHeader>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 lg:gap-6">
               {/* 文心一言 */}
               <Card className="hover:shadow-lg transition-shadow">
                 <CardHeader>
@@ -543,15 +543,14 @@ export default function AboutPage() {
             <Badge className="mb-4">核心目标</Badge>
             <SectionTitle>
               GEO优化的
-              <br />
-              五个核心目标
+              <GradientText>五个核心目标</GradientText>
             </SectionTitle>
             <SectionSubtitle>
               通过系统化策略实现品牌在AI时代的持续可见性和权威性
             </SectionSubtitle>
           </SectionHeader>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-6xl mx-auto">
             <Card className="text-center">
               <CardHeader>
                 <div className="h-12 w-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
@@ -632,63 +631,62 @@ export default function AboutPage() {
             <SectionHeader>
               <SectionTitle>
                 SEO vs GEO
-                <br />
-                详细对比分析
+                <GradientText>详细对比分析</GradientText>
               </SectionTitle>
               <SectionSubtitle>
                 理解两种优化方法的根本差异和适用场景
               </SectionSubtitle>
             </SectionHeader>
 
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse">
+            <div className="overflow-x-auto rounded-lg border border-border/50">
+              <table className="w-full min-w-[700px] border-collapse">
                 <thead>
-                  <tr className="border-b">
+                  <tr className="bg-gradient-to-r from-primary/10 to-secondary/10 border-b border-border/30">
                     <th className="text-left py-4 px-6 font-semibold">对比维度</th>
                     <th className="text-left py-4 px-6 font-semibold">传统SEO</th>
                     <th className="text-left py-4 px-6 font-semibold">GEO优化</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b">
-                    <td className="py-5 px-8 font-medium w-1/5">核心目标</td>
-                    <td className="py-5 px-8 text-right w-2/5">获取网站流量</td>
-                    <td className="py-5 px-8 text-right w-2/5">成为AI答案来源</td>
+                  <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                    <td className="py-4 px-6 font-medium">核心目标</td>
+                    <td className="py-4 px-6 text-muted-foreground">获取网站流量</td>
+                    <td className="py-4 px-6 text-muted-foreground font-medium">成为AI答案来源</td>
                   </tr>
-                  <tr className="border-b">
-                    <td className="py-5 px-8 font-medium w-1/5">优化重点</td>
-                    <td className="py-5 px-8 text-right w-2/5">关键词排名、链接建设</td>
-                    <td className="py-5 px-8 text-right w-2/5">内容权威性、结构化数据</td>
+                  <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                    <td className="py-4 px-6 font-medium">优化重点</td>
+                    <td className="py-4 px-6 text-muted-foreground">关键词排名、链接建设</td>
+                    <td className="py-4 px-6 text-muted-foreground font-medium">内容权威性、结构化数据</td>
                   </tr>
-                  <tr className="border-b">
-                    <td className="py-5 px-8 font-medium w-1/5">用户行为</td>
-                    <td className="py-5 px-8 text-right w-2/5">点击链接、浏览页面</td>
-                    <td className="py-5 px-8 text-right w-2/5">直接获取AI回答</td>
+                  <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                    <td className="py-4 px-6 font-medium">用户行为</td>
+                    <td className="py-4 px-6 text-muted-foreground">点击链接、浏览页面</td>
+                    <td className="py-4 px-6 text-muted-foreground font-medium">直接获取AI回答</td>
                   </tr>
-                  <tr className="border-b">
-                    <td className="py-5 px-8 font-medium w-1/5">成功指标</td>
-                    <td className="py-5 px-8 text-right w-2/5">排名位置、点击率</td>
-                    <td className="py-5 px-8 text-right w-2/5">AI引用率、呈现质量</td>
+                  <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                    <td className="py-4 px-6 font-medium">成功指标</td>
+                    <td className="py-4 px-6 text-muted-foreground">排名位置、点击率</td>
+                    <td className="py-4 px-6 text-muted-foreground font-medium">AI引用率、呈现质量</td>
                   </tr>
-                  <tr className="border-b">
-                    <td className="py-5 px-8 font-medium w-1/5">内容要求</td>
-                    <td className="py-5 px-8 text-right w-2/5">关键词优化、标题标签</td>
-                    <td className="py-5 px-8 text-right w-2/5">事实准确性、结构清晰度</td>
+                  <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                    <td className="py-4 px-6 font-medium">内容要求</td>
+                    <td className="py-4 px-6 text-muted-foreground">关键词优化、标题标签</td>
+                    <td className="py-4 px-6 text-muted-foreground font-medium">事实准确性、结构清晰度</td>
                   </tr>
-                  <tr className="border-b">
-                    <td className="py-5 px-8 font-medium w-1/5">技术基础</td>
-                    <td className="py-5 px-8 text-right w-2/5">页面优化、站点架构</td>
-                    <td className="py-5 px-8 text-right w-2/5">Schema标记、实体图谱</td>
+                  <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                    <td className="py-4 px-6 font-medium">技术基础</td>
+                    <td className="py-4 px-6 text-muted-foreground">页面优化、站点架构</td>
+                    <td className="py-4 px-6 text-muted-foreground font-medium">Schema标记、实体图谱</td>
                   </tr>
-                  <tr className="border-b">
-                    <td className="py-5 px-8 font-medium w-1/5">竞争环境</td>
-                    <td className="py-5 px-8 text-right w-2/5">有限的排名位置</td>
-                    <td className="py-5 px-8 text-right w-2/5">开放的答案贡献</td>
+                  <tr className="border-b border-border/20 hover:bg-muted/20 transition-colors">
+                    <td className="py-4 px-6 font-medium">竞争环境</td>
+                    <td className="py-4 px-6 text-muted-foreground">有限的排名位置</td>
+                    <td className="py-4 px-6 text-muted-foreground font-medium">开放的答案贡献</td>
                   </tr>
-                  <tr>
-                    <td className="py-5 px-8 font-medium w-1/5">长期价值</td>
-                    <td className="py-5 px-8 text-right w-2/5">流量获取能力</td>
-                    <td className="py-5 px-8 text-right w-2/5">AI权威性建立</td>
+                  <tr className="hover:bg-muted/20 transition-colors">
+                    <td className="py-4 px-6 font-medium">长期价值</td>
+                    <td className="py-4 px-6 text-muted-foreground">流量获取能力</td>
+                    <td className="py-4 px-6 text-muted-foreground font-medium">AI权威性建立</td>
                   </tr>
                 </tbody>
               </table>

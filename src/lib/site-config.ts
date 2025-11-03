@@ -59,7 +59,7 @@ export const navigationConfig = {
         },
         {
           title: '工具索引',
-          href: '/knowledge/tools',
+          href: '/tools',
         },
       ],
     },

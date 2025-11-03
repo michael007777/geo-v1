@@ -96,11 +96,7 @@ export const LoginModalSimple = ({ isOpen, onClose, onLoginSuccess }: LoginModal
     }
   }
 
-  const handleGuestAccess = () => {
-    onClose()
-    // 游客模式逻辑
-  }
-
+  
   if (!isOpen) return null
 
   const handleBackdropClick = (e: React.MouseEvent) => {
@@ -227,30 +223,7 @@ export const LoginModalSimple = ({ isOpen, onClose, onLoginSuccess }: LoginModal
               </>
             )}
 
-            {!showFallback && !error && (
-              <>
-                {/* 分隔线 */}
-                <div className="relative">
-                  <div className="absolute inset-0 flex items-center">
-                    <span className="w-full border-t border-gray-200" />
-                  </div>
-                  <div className="relative flex justify-center text-sm">
-                    <span className="bg-white px-4 text-muted-foreground">或者</span>
-                  </div>
-                </div>
-
-                {/* 游客访问 */}
-                <Button
-                  variant="outline"
-                  onClick={handleGuestAccess}
-                  className="w-full h-12 border-gray-200 hover:bg-gray-50 transition-all duration-300"
-                >
-                  <Mail className="h-4 w-4 mr-2" />
-                  游客模式访问
-                </Button>
-              </>
-            )}
-
+  
             {/* 功能特性 */}
             <div className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-4">
               <h4 className="font-semibold text-sm mb-3 flex items-center">
