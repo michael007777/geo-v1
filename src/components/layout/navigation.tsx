@@ -272,7 +272,7 @@ export const Navigation = () => {
                   <Layers className="h-7 w-7 text-white relative z-10" />
                 </div>
                 <span className="hidden font-bold text-xl sm:inline-block text-foreground group-hover:text-primary transition-colors duration-300">
-                  GEO Institute
+                  GEO 生成式引擎优化
                 </span>
               </Link>
 

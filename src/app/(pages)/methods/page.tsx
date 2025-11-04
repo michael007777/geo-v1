@@ -27,7 +27,7 @@ const methods = [
       "确保实体信息的一致性"
     ],
     benefits: ["提升AI理解准确度", "建立行业权威性", "增强语义关联性"],
-    complexity: "中等",
+    complexity: "中等" as const,
     timeframe: "2-4周",
     color: "bg-blue-500"
   },
@@ -43,7 +43,7 @@ const methods = [
       "建立提示词效果监测机制"
     ],
     benefits: ["提高AI引用率", "改善呈现质量", "增强查询覆盖面"],
-    complexity: "高",
+    complexity: "高" as const,
     timeframe: "3-6周",
     color: "bg-green-500"
   },
@@ -59,7 +59,7 @@ const methods = [
       "确保数据格式标准化"
     ],
     benefits: ["提升索引效率", "改善内容解析", "增强技术SEO"],
-    complexity: "中等",
+    complexity: "中等" as const,
     timeframe: "1-3周",
     color: "bg-purple-500"
   },
@@ -75,7 +75,7 @@ const methods = [
       "建立链接权威性传递路径"
     ],
     benefits: ["提升权威性", "增强信任度", "改善内容发现"],
-    complexity: "中等",
+    complexity: "中等" as const,
     timeframe: "4-8周",
     color: "bg-orange-500"
   },
@@ -91,7 +91,7 @@ const methods = [
       "持续优化策略和执行"
     ],
     benefits: ["确保优化效果", "快速适应变化", "持续改进质量"],
-    complexity: "高",
+    complexity: "高" as const,
     timeframe: "持续进行",
     color: "bg-red-500"
   }

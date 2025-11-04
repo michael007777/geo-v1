@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>微信二维码测试</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .qr-test { border: 1px solid #ccc; padding: 20px; margin: 20px 0; }
+        .qr-container { position: relative; display: inline-block; }
+        .qr-popup { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%);
+                     background: white; padding: 10px; border: 1px solid #ddd;
+                     border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                     margin-bottom: 10px; display: none; }
+        .qr-container:hover .qr-popup { display: block; }
+        .qr-image { width: 160px; height: 160px; padding: 12px;
+                    background: white; border-radius: 12px;
+                    border: 1px solid #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>微信二维码功能测试</h1>
+
+    <div class="qr-test">
+        <h3>测试1: 直接显示二维码</h3>
+        <img src="/images/wechat-qr.png" alt="微信二维码" style="width: 160px; height: 160px; border: 1px solid #ccc;">
+    </div>
+
+    <div class="qr-test">
+        <h3>测试2: 悬停显示二维码</h3>
+        <div class="qr-container">
+            <button style="padding: 8px; background: #f0f0f0; border: 1px solid #ccc; border-radius: 4px; cursor: pointer;">
+                📱 微信图标
+            </button>
+            <div class="qr-popup">
+                <div class="qr-image">
+                    <img src="/images/wechat-qr.png" alt="微信二维码" style="width: 100%; height: 100%; object-fit: contain;">
+                </div>
+                <p style="text-align: center; margin: 8px 0 0 0; font-size: 14px; color: #666;">扫码添加微信</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="qr-test">
+        <h3>调试信息</h3>
+        <p>图片路径: <code>/images/wechat-qr.png</code></p>
+        <p>完整URL: <code>http://localhost:3001/images/wechat-qr.png</code></p>
+        <button onclick="testImage()" style="padding: 8px; background: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">
+            测试图片加载
+        </button>
+        <div id="test-result" style="margin-top: 10px;"></div>
+    </div>
+
+    <script>
+        function testImage() {
+            const img = new Image();
+            const resultDiv = document.getElementById('test-result');
+
+            img.onload = function() {
+                resultDiv.innerHTML = '<p style="color: green;">✅ 图片加载成功！尺寸: ' + img.width + 'x' + img.height + '</p>';
+            };
+
+            img.onerror = function() {
+                resultDiv.innerHTML = '<p style="color: red;">❌ 图片加载失败！</p>';
+            };
+
+            img.src = '/images/wechat-qr.png';
+        }
+
+        // 页面加载时自动测试
+        window.onload = function() {
+            testImage();
+        };
+    </script>
+</body>
+</html>

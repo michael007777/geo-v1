@@ -1,6 +1,6 @@
 {
-  "name": "GEO Optimization Institute",
-  "short_name": "GEO Institute",
+  "name": "GEO 生成式引擎优化",
+  "short_name": "GEO 生成式引擎优化",
   "description": "专业的生成式引擎优化(GEO)服务平台 - 让AI像人类一样理解您的内容",
   "start_url": "/",
   "display": "standalone",
