@@ -231,6 +231,8 @@ export const Navigation = () => {
   const [isLoginModalOpen, setIsLoginModalOpen] = React.useState(false)
   const [user, setUser] = React.useState<{ email: string; name: string } | null>(null)
   const [isLoading, setIsLoading] = React.useState(false)
+  const [isUserDropdownOpen, setIsUserDropdownOpen] = React.useState(false)
+  const userDropdownRef = React.useRef<HTMLDivElement>(null)
 
   // 检查是否已登录
   React.useEffect(() => {
@@ -245,6 +247,23 @@ export const Navigation = () => {
       }
     }
   }, [])
+
+  // 点击外部关闭用户下拉菜单
+  React.useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (userDropdownRef.current && !userDropdownRef.current.contains(event.target as Node)) {
+        setIsUserDropdownOpen(false)
+      }
+    }
+
+    if (isUserDropdownOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isUserDropdownOpen])
 
   const handleLogin = () => {
     setIsLoginModalOpen(true)
@@ -283,14 +302,43 @@ export const Navigation = () => {
               {isLoading ? (
                 <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary" />
               ) : user ? (
-                <div className="flex items-center space-x-3">
-                  <Button variant="ghost" size="sm" className="hover:bg-primary/10 transition-all duration-300">
-                    <User className="h-4 w-4 mr-2" />
-                    <span className="hidden sm:inline">{user.email}</span>
-                  </Button>
-                  <Button variant="outline" size="sm" onClick={handleLogout} className="hover:bg-primary hover:text-primary-foreground transition-all duration-300">
-                    退出
-                  </Button>
+                <div className="relative" ref={userDropdownRef}>
+                  <button
+                    onClick={() => setIsUserDropdownOpen(!isUserDropdownOpen)}
+                    className="flex items-center space-x-3 px-4 py-2 rounded-lg hover:bg-primary/10 transition-all duration-300"
+                  >
+                    <div className="h-8 w-8 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+                      <User className="h-4 w-4 text-white" />
+                    </div>
+                    <span className="hidden sm:inline font-medium">{user.name}</span>
+                    <ChevronDown
+                      className={cn(
+                        "h-4 w-4 transition-transform duration-300",
+                        isUserDropdownOpen && "rotate-180"
+                      )}
+                    />
+                  </button>
+
+                  {isUserDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-56 rounded-xl border border-border/50 bg-popover/95 backdrop-blur-md p-2 text-popover-foreground shadow-lg z-50 animate-fade-in-up">
+                      <div className="px-4 py-3 border-b border-border/50">
+                        <p className="text-sm font-medium">{user.name}</p>
+                        <p className="text-xs text-muted-foreground">{user.email}</p>
+                      </div>
+                      <div className="py-2">
+                        <button
+                          onClick={() => {
+                            handleLogout()
+                            setIsUserDropdownOpen(false)
+                          }}
+                          className="w-full flex items-center space-x-3 px-4 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-lg transition-all duration-200"
+                        >
+                          <User className="h-4 w-4" />
+                          <span>退出登录</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
               ) : (
                 <Button
