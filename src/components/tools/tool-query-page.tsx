@@ -323,126 +323,125 @@ export const ToolQueryPage = () => {
       <section className="relative bg-gradient-to-br from-primary/5 via-background to-secondary/5 py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-5xl mx-auto">
-            <div className="text-center mb-12">
-              <Badge className="mb-6">GEO智能查询工具</Badge>
-              <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
-                AI时代的
-                <GradientText>智能查询引擎</GradientText>
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
-                通过自然语言查询企业GEO表现，支持地区、行业、排名等多维度搜索，
-                让AI搜索优化结果一目了然
-              </p>
-            </div>
-
             {/* 主查询输入区域 */}
-            <Card className="max-w-4xl mx-auto mb-12 border-2 border-primary/20 shadow-xl">
-              <CardHeader className="pb-4">
-                <CardTitle className="text-2xl text-center flex items-center justify-center">
-                  <Sparkles className="mr-2 h-6 w-6 text-primary" />
+            <div className="max-w-5xl mx-auto mb-12">
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center justify-center mb-6">
+                  <div className="p-4 rounded-2xl bg-gradient-to-br from-primary/10 to-secondary/10 shadow-lg">
+                    <Sparkles className="h-8 w-8 text-primary" />
+                  </div>
+                </div>
+                <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">
                   智能GEO查询
-                </CardTitle>
-                <CardDescription className="text-center text-base">
+                </h1>
+                <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
                   输入您的问题，例如："上海哪家企业GEO的公司好？"
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
+                </p>
+              </div>
+
+              <div className="space-y-8">
                 {/* 主输入框 */}
                 <div className="relative">
-                  <textarea
-                    value={queryText}
-                    onChange={(e) => setQueryText(e.target.value)}
-                    placeholder="请输入您想查询的问题，支持自然语言描述..."
-                    className="w-full px-4 py-4 pr-24 border-2 border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent resize-none text-base"
-                    rows={3}
-                  />
-                  <div className="absolute bottom-4 right-4 flex space-x-2">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      onClick={handleVoiceInput}
-                      disabled={isListening}
-                      className="h-10 w-10 p-0"
-                    >
-                      {isListening ? (
-                        <div className="animate-pulse">
-                          <Mic className="h-4 w-4 text-red-500" />
-                        </div>
-                      ) : (
-                        <Mic className="h-4 w-4" />
-                      )}
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="h-10 w-10 p-0"
-                    >
-                      <Camera className="h-4 w-4" />
-                    </Button>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-secondary/5 rounded-2xl"></div>
+                  <div className="relative">
+                    <textarea
+                      value={queryText}
+                      onChange={(e) => setQueryText(e.target.value)}
+                      placeholder="请输入您想查询的问题，支持自然语言描述..."
+                      className="w-full px-6 py-6 pr-32 border-2 border-border/50 rounded-2xl focus:outline-none focus:ring-4 focus:ring-primary/20 focus:border-primary resize-none text-lg shadow-sm backdrop-blur-sm bg-background/80"
+                      rows={4}
+                    />
+                    <div className="absolute bottom-6 right-6 flex space-x-3">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={handleVoiceInput}
+                        disabled={isListening}
+                        className="h-12 w-12 p-0 rounded-xl hover:bg-primary/10 transition-all duration-300"
+                      >
+                        {isListening ? (
+                          <div className="animate-pulse">
+                            <Mic className="h-5 w-5 text-red-500" />
+                          </div>
+                        ) : (
+                          <Mic className="h-5 w-5" />
+                        )}
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="h-12 w-12 p-0 rounded-xl hover:bg-primary/10 transition-all duration-300"
+                      >
+                        <Camera className="h-5 w-5" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
 
-                {/* 快速查询选项 */}
+              {/* 快速查询选项 */}
                 <div>
-                  <h3 className="text-sm font-medium mb-3 flex items-center">
-                    <Target className="mr-2 h-4 w-4 text-primary" />
+                  <h3 className="text-lg font-semibold mb-6 flex items-center justify-center">
+                    <Target className="mr-3 h-5 w-5 text-primary" />
                     快速查询类型
                   </h3>
-                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                     {quickQueries.map((query) => {
                       const IconComponent = query.icon
                       return (
-                        <Card
+                        <div
                           key={query.id}
-                          className={`cursor-pointer transition-all duration-300 hover:shadow-md hover:scale-105 ${
+                          className={`cursor-pointer transition-all duration-300 hover:shadow-lg hover:scale-105 p-6 rounded-2xl border-2 border-transparent ${
                             selectedQuickQuery === query.id
-                              ? 'ring-2 ring-primary bg-primary/5'
-                              : 'hover:border-primary/50'
+                              ? 'ring-2 ring-primary bg-primary/10 border-primary/30 shadow-lg'
+                              : 'hover:border-primary/30 bg-background/50 backdrop-blur-sm'
                           }`}
                           onClick={() => handleQuickQuerySelect(query.id, query.examples[0])}
                         >
-                          <CardContent className="p-4 text-center">
-                            <div className={`mb-2 mx-auto w-10 h-10 rounded-lg bg-gradient-to-br ${query.color} flex items-center justify-center`}>
-                              <IconComponent className="h-5 w-5 text-white" />
+                          <div className="text-center">
+                            <div className={`mb-3 mx-auto w-12 h-12 rounded-xl bg-gradient-to-br ${query.color} flex items-center justify-center shadow-md`}>
+                              <IconComponent className="h-6 w-6 text-white" />
                             </div>
-                            <h4 className="font-medium text-sm mb-1">{query.title}</h4>
-                            <p className="text-xs text-muted-foreground">{query.description}</p>
-                          </CardContent>
-                        </Card>
+                            <h4 className="font-semibold text-sm mb-2">{query.title}</h4>
+                            <p className="text-xs text-muted-foreground leading-relaxed">{query.description}</p>
+                          </div>
+                        </div>
                       )
                     })}
                   </div>
                 </div>
 
-                {/* 查询按钮 */}
-                <Button
-                  size="lg"
-                  onClick={handleQuery}
-                  disabled={!queryText.trim() || isQuerying}
-                  className="w-full h-12 text-lg"
-                >
-                  {isQuerying ? (
-                    <>
-                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2" />
-                      智能分析中...
-                    </>
-                  ) : (
-                    <>
-                      <Search className="mr-2 h-5 w-5" />
-                      开始GEO智能查询
-                    </>
-                  )}
-                </Button>
+              {/* 查询按钮 */}
+                <div className="relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-2xl blur-xl opacity-50"></div>
+                  <Button
+                    size="lg"
+                    onClick={handleQuery}
+                    disabled={!queryText.trim() || isQuerying}
+                    className="relative w-full h-14 text-lg font-semibold rounded-2xl bg-gradient-to-r from-primary to-secondary hover:from-primary/90 hover:to-secondary/90 text-white shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]"
+                  >
+                    {isQuerying ? (
+                      <>
+                        <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-white mr-3" />
+                        智能分析中...
+                      </>
+                    ) : (
+                      <>
+                        <Search className="mr-3 h-6 w-6" />
+                        开始GEO智能查询
+                      </>
+                    )}
+                  </Button>
+                </div>
 
                 {/* 热门查询示例 */}
                 <div className="text-center">
-                  <p className="text-sm text-muted-foreground mb-2">热门查询：</p>
-                  <div className="flex flex-wrap justify-center gap-2">
+                  <p className="text-base font-medium text-muted-foreground mb-4">热门查询：</p>
+                  <div className="flex flex-wrap justify-center gap-3">
                     {quickQueries.slice(0, 3).flatMap(q => q.examples).slice(0, 5).map((example, index) => (
                       <Badge
                         key={index}
                         variant="outline"
-                        className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors"
+                        className="cursor-pointer hover:bg-primary hover:text-primary-foreground transition-all duration-300 px-4 py-2 text-sm hover:scale-105"
                         onClick={() => setQueryText(example)}
                       >
                         {example}
@@ -450,8 +449,8 @@ export const ToolQueryPage = () => {
                     ))}
                   </div>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </div>
         </div>
       </section>

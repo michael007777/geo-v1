@@ -232,7 +232,7 @@ export const LoginModalSimple = ({ isOpen, onClose, onLoginSuccess }: LoginModal
               </h4>
               <div className="grid grid-cols-2 gap-2">
                 {[
-                  "无限次GEO查询",
+                  "多次GEO查询",
                   "AI模型排名报告",
                   "个性化优化建议",
                   "数据导出和历史",

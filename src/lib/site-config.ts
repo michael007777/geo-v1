@@ -57,10 +57,6 @@ export const navigationConfig = {
           title: '提示词实验室',
           href: '/knowledge/prompt-lab',
         },
-        {
-          title: '工具索引',
-          href: '/tools',
-        },
       ],
     },
     {
